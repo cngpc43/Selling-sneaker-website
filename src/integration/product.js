@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-const Product = new Schema({
-  name:String,
-  img:String,
-});
-const productModel = mongoose.model('product', Product);
- module.exports=productModel;
+const { Schema } = mongoose;
+const product = new Schema({
+    name:String,
+    model:String,
+    description:String,
+    img:String,
+    price:Number,
+})
+// ADD PLUGIN
+module.exports = mongoose.model('product',product)

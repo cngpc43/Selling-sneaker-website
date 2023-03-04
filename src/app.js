@@ -1,7 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const route = require('./api/routes/route');
+var bodyParser = require('body-parser')
+
 const app = express();
+
+
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
+
 async function connect() {
     try {
       await mongoose.connect('mongodb+srv://wdsteambe2003:123abc456@wdsdatabase.i3up3zz.mongodb.net/website');
@@ -10,6 +19,10 @@ async function connect() {
       console.log('connect failure')
     }
 }
+
+
+
+
 connect();
 route(app);
 app.listen(3000);
